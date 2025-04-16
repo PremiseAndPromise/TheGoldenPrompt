@@ -1,0 +1,28 @@
+body {
+  background-color: black;
+  color: limegreen;
+  font-family: monospace;
+  padding: 20px;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.terminal {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+.terminal input {
+  background: black;
+  border: none;
+  color: limegreen;
+  font-size: 1.5rem;
+  flex-grow: 1;
+  outline: none;
+}
+#response {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  white-space: pre-wrap;
+}
