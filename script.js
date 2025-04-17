@@ -1,7 +1,8 @@
 const input = document.getElementById("promptInput");
 const response = document.getElementById("response");
-const scriptURL = "https://script.google.com/macros/s/AKfycbw_jQJRk-V97if77yXDfAFZyPsYpt9GFy_Hd97jwENpq_luWdXy_K0Q5bPFQlew4vk0DQ/exec";
 
+// REPLACE with your actual Web App URL:
+const scriptURL = "https://script.google.com/macros/s/AKfycbwM3EJaYlnEveR8NPQCtqz4O5LhD_8Vkno8S04KYS8-Vo4Ong8GKVLMIXQbHjnUOtK4KA/exec";
 
 input.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
@@ -13,7 +14,14 @@ input.addEventListener("keypress", function (e) {
       return;
     }
 
-    const uniqueId = generateUniqueId();
+    const timestamp = new Date().toISOString();
+    const email = "[user@example.com]"; // ← replace if collecting email or pass from signup
+
+    const payload = new URLSearchParams({
+      question: question,
+      timestamp: timestamp,
+      email: email,
+    });
 
     fetch(scriptURL, {
       method: "POST",
@@ -21,19 +29,13 @@ input.addEventListener("keypress", function (e) {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: new URLSearchParams({
-        question: question,
-        id: uniqueId,
-        email: "[user_email]", // Optional: insert or pass manually
-        timestamp: new Date().toISOString(),
-      }),
+      body: payload,
+    })
+    .then(() => {
+      response.textContent = `Your question has been received.\nAn inquiry ID has been generated and stored.\nPlease check your email or reach out with your code to receive your answer.`;
+    })
+    .catch(error => {
+      response.textContent = "Something went wrong. Please try again later.";
     });
-
-    response.textContent = `Your question has been received and assigned a unique inquiry ID.\n\nYour ID: ${uniqueId}\n\nPlease email this code to: [richard@premiseandpromiseministries.org]\nSubject: Golden Prompt Inquiry\n\nOnce your question is reviewed, you will receive a personal response by email.`;
-
   }
 });
-
-function generateUniqueId() {
-  return "PnP-" + Math.random().toString(36).substring(2, 8).toUpperCase();
-}
