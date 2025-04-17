@@ -57,20 +57,22 @@ input.addEventListener("keypress", function (e) {
       email: "you@example.com" // hardcoded for now
     });
 
-    fetch(scriptURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: payload,
-    })
-    .then(res => res.text())
-    .then(id => {
-      response.textContent = `✅ Your question has been received.\nYour inquiry ID is: ${id}\nPlease email this code to: you@example.com`;
-    })
-    .catch(error => {
-      response.textContent = "Something went wrong. Please try again later.";
-      console.error("Fetch error:", error);
-    });
-  }
+   fetch(scriptURL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+  body: new URLSearchParams({
+    question: question,
+    timestamp: new Date().toISOString(),
+    email: "test@prompt.com",
+  }),
+})
+.then(res => res.text())
+.then(id => {
+  response.textContent = `✅ Your question has been received.\nYour inquiry ID is: ${id}`;
+})
+.catch(error => {
+  response.textContent = "Something went wrong. Please try again later.";
+  console.error("Fetch error:", error);
 });
