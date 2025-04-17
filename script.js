@@ -4,7 +4,7 @@ const response = document.getElementById("response");
 const scriptURL = "const input = document.getElementById("promptInput");
 const response = document.getElementById("response");
 
-const scriptURL = "https://script.google.com/macros/s/AKfycbwM3EJaYlnEveR8NPQCtqz4O5LhD_8Vkno8S04KYS8-Vo4Ong8GKVLMIXQbHjnUOtK4KA/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbwRZ-uH_9YriMmx5k3Sms0JKFKENLS66gH3TMSfGZ7Z9OJaGCy5WRg86zKTPBSxjQ3CXA/exec";
 
 input.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
