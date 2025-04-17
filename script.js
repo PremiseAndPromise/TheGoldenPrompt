@@ -24,18 +24,17 @@ input.addEventListener("keypress", function (e) {
     });
 
     fetch(scriptURL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: payload,
-    })
-    .then(() => {
-      response.textContent = `Your question has been received.\nAn inquiry ID has been generated and stored.\nPlease check your email or reach out with your code to receive your answer.`;
-    })
-    .catch(error => {
-      response.textContent = "Something went wrong. Please try again later.";
-    });
-  }
-});
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+  body: payload,
+})
+  .then(response => response.text())
+  .then(id => {
+    response.textContent = `Your question has been received.\nYour inquiry ID is: ${id}\n\nPlease email this code to: [your-email@example.com]\nSubject: Golden Prompt Inquiry\n\nOnce your question is reviewed, you will receive a personal response.`;
+  })
+  .catch(error => {
+    response.textContent = "Something went wrong. Please try again later.";
+    console.error("Fetch error:", error);
+  });
