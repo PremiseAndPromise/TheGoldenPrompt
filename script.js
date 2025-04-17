@@ -1,10 +1,6 @@
 const input = document.getElementById("promptInput");
 const response = document.getElementById("response");
-
-// Disable paste
-input.addEventListener("paste", (e) => {
-  e.preventDefault();
-});
+const scriptURL = "https://script.google.com/macros/s/YOUR_DEPLOYED_URL/exec";
 
 input.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
@@ -16,20 +12,26 @@ input.addEventListener("keypress", function (e) {
       return;
     }
 
-    // Basic paradox detection
-    if (
-      question.toLowerCase().includes("paradox") ||
-      question.toLowerCase().includes("cannot exist") ||
-      question.toLowerCase().includes("impossible")
-    ) {
-      response.textContent =
-        "Nice try, but that question has no factual answer or relevant confusion I can find or process.";
-    } else {
-      // Generate a fake response ID for demo
-      const id = "PnP-" + Math.random().toString(36).substring(2, 8).toUpperCase();
-      response.textContent = `Thank you for your inquiry.
-ID: ${id}
-Answer: [Placeholder response]`;
-    }
+    const uniqueId = generateUniqueId();
+
+    fetch(scriptURL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        question: question,
+        id: uniqueId,
+        email: "[user_email]", // Optional: insert or pass manually
+        timestamp: new Date().toISOString(),
+      }),
+    });
+
+    response.textContent = `Your inquiry has been received.\\nID: ${uniqueId}\\nYou will be contacted once a response is ready.`;
   }
 });
+
+function generateUniqueId() {
+  return "PnP-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+}
