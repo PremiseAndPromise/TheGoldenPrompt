@@ -1,7 +1,7 @@
 const input = document.getElementById("promptInput");
 const response = document.getElementById("response");
 
-const scriptURL = "https://script.google.com/macros/s/AKfycbyqs4rdfK7-_zR8tZKN83RuPzQWJMcElcedJrylcKBL/dev";
+const scriptURL = "https://script.google.com/macros/s/AKfycbwM3EJaYlnEveR8NPQCtqz4O5LhD_8Vkno8S04KYS8-Vo4Ong8GKVLMIXQbHjnUOtK4KA/exec";
 
 input.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
