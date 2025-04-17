@@ -29,7 +29,8 @@ input.addEventListener("keypress", function (e) {
       }),
     });
 
-    response.textContent = `Your inquiry has been received.\\nID: ${uniqueId}\\nYou will be contacted once a response is ready.`;
+    response.textContent = `Your question has been received and assigned a unique inquiry ID.\n\nYour ID: ${uniqueId}\n\nPlease email this code to: [richard@premiseandpromiseministries.org]\nSubject: Golden Prompt Inquiry\n\nOnce your question is reviewed, you will receive a personal response by email.`;
+
   }
 });
 
