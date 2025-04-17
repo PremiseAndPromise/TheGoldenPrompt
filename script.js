@@ -1,6 +1,6 @@
 const input = document.getElementById("promptInput");
 const response = document.getElementById("response");
-const scriptURL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbw_jQJRk-V97if77yXDfAFZyPsYpt9GFy_Hd97jwENpq_luWdXy_K0Q5bPFQlew4vk0DQ/exec";
 
 
 input.addEventListener("keypress", function (e) {
