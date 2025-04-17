@@ -32,9 +32,10 @@ input.addEventListener("keypress", function (e) {
 })
   .then(response => response.text())
   .then(id => {
-    response.textContent = `Your question has been received.\nYour inquiry ID is: ${id}\n\nPlease email this code to: [your-email@example.com]\nSubject: Golden Prompt Inquiry\n\nOnce your question is reviewed, you will receive a personal response.`;
+    response.textContent = `Your question has been received.\nYour inquiry ID is: ${id}\n\nPlease email this code to: [your-email@example.com]`;
   })
   .catch(error => {
     response.textContent = "Something went wrong. Please try again later.";
     console.error("Fetch error:", error);
   });
+
