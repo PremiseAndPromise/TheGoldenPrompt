@@ -27,7 +27,7 @@ input.addEventListener("keypress", function (e) {
     })
     .then(res => res.text())
     .then(id => {
-      response.textContent = `✅ Your question has been received.\nYour inquiry ID is: ${id}\nPlease email this code to: your@email.com`;
+      response.textContent = `✅ Your question has been received.\nYour inquiry ID is: ${id}\nPlease email this ID CODE to: richard@premiseandpromiseministries.org`;
     })
     .catch(error => {
       response.textContent = "Something went wrong. Please try again later.";
